@@ -36,7 +36,7 @@ void SendToNetLoop(){
 
     //std::stringstream val;
     std::string str;
-    char* s[100];
+    char s[100];
     websocketpp::lib::error_code ec;
     delay(5000);        
 
