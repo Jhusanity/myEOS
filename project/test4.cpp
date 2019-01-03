@@ -54,8 +54,8 @@ void SendToNetLoop(){
                                    , myrestroom.toilets[0].locked, myrestroom.toilets[0].occupied
                                    , myrestroom.toilets[1].locked, myrestroom.toilets[1].occupied);
 
-        c.get_alog().write(websocketpp::log::alevel::app, str);
-        c.send(con_hdl,str,websocketpp::frame::opcode::text,ec);
+        myclient.get_alog().write(websocketpp::log::alevel::app, str);
+        myclient.send(con_hdl,str,websocketpp::frame::opcode::text,ec);
  
         if (ec) {
             myclient.get_alog().write(websocketpp::log::alevel::app,"Send Error: "+ec.message());
