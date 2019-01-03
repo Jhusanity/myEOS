@@ -39,13 +39,13 @@ void SendToNetLoop(){
     while(1) {   
         //val.str("");
         //val << "count is " << count++; 
-        sprintf(str,"ID:%3d\tScore:%3d\tWaitingPeople:%3d\n
-                     Toilet0:\n
-                     locked:%d\n
-                     occupied:%d\n
-                     Toilet1:\n
-                     locked:%d\n
-                     occupied:%d\n", myrestroom.ID
+        sprintf(str,"ID:%3d\tScore:%3d\tWaitingPeople:%3d\n"
+                    "Toilet0:\n"
+                    "locked:%d\n"
+                    "occupied:%d\n"
+                    "Toilet1:\n"
+                    "locked:%d\n"
+                    "occupied:%d\n", myrestroom.ID
                                    , myrestroom.score
                                    , myrestroom.waitingpeople
                                    , myrestroom.toilets[0].locked, myrestroom.toilets[0].occupied
