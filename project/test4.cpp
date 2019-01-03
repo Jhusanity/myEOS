@@ -14,7 +14,7 @@
 typedef websocketpp::server<websocketpp::config::asio> server;
 typedef websocketpp::client<websocketpp::config::asio_client> client;
 client myclient;
-std::string clienturi = "ws://localhost:9000";
+std::string clienturi = "ws://localhost:9010";
 websocketpp::connection_hdl con_hdl;
 
 #define TOILET0LOCKPIN 0
@@ -34,26 +34,26 @@ int scoring = 0;
 
 void SendToNetLoop(){
 
-    //std::stringstream val;
     std::string str;
     char s[100];
     websocketpp::lib::error_code ec;
     delay(5000);        
 
     while(1) {   
-        //val.str("");
-        //val << "count is " << count++; 
-        sprintf(s,"ID:%3d\tScore:%3d\tWaitingPeople:%3d\n"
-                    "Toilet0:\n"
-                    "locked:%d\n"
-                    "occupied:%d\n"
-                    "Toilet1:\n"
-                    "locked:%d\n"
-                    "occupied:%d\n", myrestroom.ID
-                                   , myrestroom.score
-                                   , myrestroom.waitingpeople
-                                   , myrestroom.toilets[0].locked, myrestroom.toilets[0].occupied
-                                   , myrestroom.toilets[1].locked, myrestroom.toilets[1].occupied);
+
+        sprintf(s, "ID:%3d\n"
+                   "Score:%3d\n"
+                   "WaitingPeople:%3d\n"
+                   "Toilet0:\n"
+                   "locked:%d\n"
+                   "occupied:%d\n"
+                   "Toilet1:\n"
+                   "locked:%d\n"
+                   "occupied:%d\n", myrestroom.ID
+                                  , myrestroom.score
+                                  , myrestroom.waitingpeople
+                                  , myrestroom.toilets[0].locked, myrestroom.toilets[0].occupied
+                                  , myrestroom.toilets[1].locked, myrestroom.toilets[1].occupied);
         str.assign(s);
         myclient.get_alog().write(websocketpp::log::alevel::app, str);
         myclient.send(con_hdl,str,websocketpp::frame::opcode::text,ec);
@@ -62,6 +62,7 @@ void SendToNetLoop(){
             myclient.get_alog().write(websocketpp::log::alevel::app,"Send Error: "+ec.message());
             break;
         }
+        printf("Send to Net!!!!\n");
         delay(1000);
     }
 }
