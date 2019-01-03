@@ -72,8 +72,9 @@ void *SendToNet(void *threadid)
 
 void on_message(websocketpp::connection_hdl hdl, server::message_ptr msg)
 {
-    printf("Get#people: %s\n", msg->get_payload().c_str());
-    printf("try int: %d\n", std::stoi(msg->get_payload()));
+    printf("Get #people: %d\n", std::stoi(msg->get_payload()));
+    scoring = 1;
+    myrestroom.waitingpeople = std::stoi(msg->get_payload());
 }   
 
 void *GetCam(void *threadid)
@@ -88,10 +89,7 @@ void *GetCam(void *threadid)
     print_server.start_accept();
 
     print_server.run();
-/*    while(1){
-        printf("eat photo\n");
-        delay(1000);
-    }*/   
+ 
     pthread_exit(NULL);
 }
 
