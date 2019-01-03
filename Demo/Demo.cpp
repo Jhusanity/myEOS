@@ -185,7 +185,7 @@ int main(int argc, char *argv[])
 {
     char head[10] = {"ws://"};
     clienturi.assign(strcat(head,argv[1]));
-    serverport = p = atoi(argv[2]);
+    serverport = atoi(argv[2]);
 
     if (wiringPiSetup () < 0) {
         fprintf (stderr, "Unable to setup wiringPi: %s\n", strerror (errno));
