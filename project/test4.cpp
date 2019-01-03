@@ -36,13 +36,14 @@ void SendToNetLoop(){
 
     //std::stringstream val;
     std::string str;
+    char* s[100];
     websocketpp::lib::error_code ec;
     delay(5000);        
 
     while(1) {   
         //val.str("");
         //val << "count is " << count++; 
-        sprintf(str,"ID:%3d\tScore:%3d\tWaitingPeople:%3d\n"
+        sprintf(s,"ID:%3d\tScore:%3d\tWaitingPeople:%3d\n"
                     "Toilet0:\n"
                     "locked:%d\n"
                     "occupied:%d\n"
@@ -53,7 +54,7 @@ void SendToNetLoop(){
                                    , myrestroom.waitingpeople
                                    , myrestroom.toilets[0].locked, myrestroom.toilets[0].occupied
                                    , myrestroom.toilets[1].locked, myrestroom.toilets[1].occupied);
-
+        str = s;
         myclient.get_alog().write(websocketpp::log::alevel::app, str);
         myclient.send(con_hdl,str,websocketpp::frame::opcode::text,ec);
  
