@@ -89,6 +89,7 @@ void *Score()
             k = 2 + myrestroom.waitingpeople - x[0] - x[1];
             myrestroom.score = round(100 * pow(0.9,k));
             printf("New cosre: %d\n",myrestroom.score);
+            scoring = 0;
         }
         delay( 50 );
     }
