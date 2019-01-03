@@ -22,7 +22,7 @@ int serverport = 9000;
 #define TOILET0OCCUPYPIN 1
 #define TOILET1LOCKPIN 2
 #define TOILET1OCCUPYPIN 3
-#define NUMTHREADS 3
+#define NUMTHREADS 4
 /* 
  * 1. get gpio
  * 2. send to net
