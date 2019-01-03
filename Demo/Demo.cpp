@@ -42,17 +42,17 @@ void SendToNetLoop(){
 
     while(1) {   
 
-        sprintf(s, "{ID:%3d,"
-                   "Score:%3d,"
-                   "WaitingPeople:%3d,"
-                   "locked0:%d,"
-                   "occupied0:%d,"
-                   "locked1:%d,"
-                   "occupied1:%d}", myrestroom.ID
-                                  , myrestroom.score
-                                  , myrestroom.waitingpeople
-                                  , myrestroom.toilets[0].locked, myrestroom.toilets[0].occupied
-                                  , myrestroom.toilets[1].locked, myrestroom.toilets[1].occupied);
+        sprintf(s, "{\"ID\":%d,"
+                   "\"Score\":%d,"
+                   "\"WaitingPeople\":%d,"
+                   "\"locked0\":%d,"
+                   "\"occupied0\":%d,"
+                   "\"locked1\":%d,"
+                   "\"occupied1\":%d}", myrestroom.ID
+                                      , myrestroom.score
+                                      , myrestroom.waitingpeople
+                                  	  , myrestroom.toilets[0].locked, myrestroom.toilets[0].occupied
+                                  	  , myrestroom.toilets[1].locked, myrestroom.toilets[1].occupied);
         str.assign(s);
         myclient.get_alog().write(websocketpp::log::alevel::app, str);
         myclient.send(con_hdl,str,websocketpp::frame::opcode::text,ec);
