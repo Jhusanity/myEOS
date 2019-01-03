@@ -170,7 +170,7 @@ void *Score(void *threadid)
                 x[i] = (-myrestroom.toilets[i].locked+1)*(1-myrestroom.toilets[i].occupied*0.5);
             }  
             k = 2 + myrestroom.waitingpeople - x[0] - x[1];
-            myrestroom.score = round(100 * pow(0.9,k));
+            myrestroom.score = round(100 * pow(0.8,k));
             printf("New cosre: %d\n",myrestroom.score);
             scoring = 0;
         }
