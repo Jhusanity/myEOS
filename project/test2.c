@@ -1,3 +1,7 @@
+/*
+ * gcc test2.c -o test2 -lpthread -lm -lwiringPi
+ */
+
 #include <pthread.h>
 #include <wiringPi.h>
 #include <stdio.h>

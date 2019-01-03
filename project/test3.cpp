@@ -47,7 +47,7 @@ void toilet1occupyChange(void){
     scoring = 1;
 }
 
-void *GetGPIO()
+void *GetGPIO(void *threadid)
 {
     printf("Hello! I am thread GetGPIO\n");
     while(1){
@@ -60,7 +60,7 @@ void *GetGPIO()
     pthread_exit(NULL);
 }
 
-void *SendToNet()
+void *SendToNet(void *threadid)
 {
     printf("Hello! I am thread SendToNet\n");
     while(1){
@@ -75,7 +75,7 @@ void on_message(websocketpp::connection_hdl hdl, server::message_ptr msg)
     printf("Get#people: %s\n", msg->get_payload());
 }
 
-void *GetCam()
+void *GetCam(void *threadid)
 {
     printf("Hello! I am thread GetCam\n");
     server print_server;
@@ -94,7 +94,7 @@ void *GetCam()
     pthread_exit(NULL);
 }
 
-void *Score()
+void *Score(void *threadid)
 {
     printf("Hello! I am thread Score\n");
     double x[2];
@@ -145,13 +145,13 @@ int main(int argc, char *argv[])
         printf("Main: creating thread %ld\n", t);
 
         if (t == 0)
-            rc = pthread_create(&threads[t], NULL, GetGPIO, NULL);
+            rc = pthread_create(&threads[t], NULL, GetGPIO, (void *)t);
         else if (t == 1)
-            rc = pthread_create(&threads[t], NULL, SendToNet, NULL);
+            rc = pthread_create(&threads[t], NULL, SendToNet, (void *)t);
         else if (t == 2)
-            rc = pthread_create(&threads[t], NULL, GetCam, NULL);
+            rc = pthread_create(&threads[t], NULL, GetCam, (void *)t);
         else if (t == 3)
-            rc = pthread_create(&threads[t], NULL, Score, NULL);
+            rc = pthread_create(&threads[t], NULL, Score, (void *)t);
 
         if(rc){
             printf("ERROR: return code from pthread_create() is %d\n", rc);
