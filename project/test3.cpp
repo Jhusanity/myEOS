@@ -72,8 +72,8 @@ void *SendToNet(void *threadid)
 
 void on_message(websocketpp::connection_hdl hdl, server::message_ptr msg)
 {
-    printf("Get#people: %s\n", msg->get_payload());
-}
+    printf("Get#people: %s\n", msg->get_payload().c_str());
+}   printf("try int: %d\n", stoi(msg->get_payload()));
 
 void *GetCam(void *threadid)
 {
