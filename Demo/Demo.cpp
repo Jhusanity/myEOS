@@ -43,15 +43,13 @@ void SendToNetLoop(){
 
     while(1) {   
 
-        sprintf(s, "ID:%3d\n"
-                   "Score:%3d\n"
-                   "WaitingPeople:%3d\n"
-                   "Toilet0:\n"
-                   "locked:%d\n"
-                   "occupied:%d\n"
-                   "Toilet1:\n"
-                   "locked:%d\n"
-                   "occupied:%d\n", myrestroom.ID
+        sprintf(s, "{ID:%3d,"
+                   "Score:%3d,"
+                   "WaitingPeople:%3d,"
+                   "locked0:%d,"
+                   "occupied0:%d,"
+                   "locked1:%d,"
+                   "occupied1:%d}", myrestroom.ID
                                   , myrestroom.score
                                   , myrestroom.waitingpeople
                                   , myrestroom.toilets[0].locked, myrestroom.toilets[0].occupied
