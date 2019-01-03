@@ -6,4 +6,4 @@ window:
 
 rpi:
 %: %.c
-	$(CC) $< -o $@ -lpthread -lwiring -lm
+	$(CC) $< -o $@ -lpthread -lwiringPi -lm
