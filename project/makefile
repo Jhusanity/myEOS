@@ -1,4 +1,5 @@
-CC = gcc
+#CC = gcc
+CPP = g++
 
-%: %.c
-	$(CC) $< -o $@ -lpthread -lwiringPi -lm
+%: %.cpp
+	$(CPP) $< -o $@ -lpthread -lwiringPi -lboost_system -lm -std=c++11
