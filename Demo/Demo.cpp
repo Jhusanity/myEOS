@@ -17,7 +17,6 @@ client myclient;
 std::string clienturi = "ws://localhost:9010";
 websocketpp::connection_hdl con_hdl;
 int serverport = 9000;
-int myID = 100;
 
 #define TOILET0LOCKPIN 0
 #define TOILET0OCCUPYPIN 1
@@ -31,7 +30,7 @@ int myID = 100;
  * 4. score
  */
 
-struct Restroom myrestroom={myID,0,100};// ID, score, waitingpeople
+struct Restroom myrestroom={999,100,0};// ID, score, waitingpeople
 int scoring = 0;
 
 void SendToNetLoop(){
@@ -182,7 +181,7 @@ void *Score(void *threadid)
 
 int main(int argc, char *argv[])
 {
-	myID = atoi(argv[1]);
+	myrestroom.ID = atoi(argv[1]);
     char head[10] = {"ws://"};
     clienturi.assign(strcat(head,argv[2]));
     serverport = atoi(argv[3]);
