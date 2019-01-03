@@ -15,7 +15,7 @@ int main()
 	print_server.set_message_handler(&on_message);
 
 	print_server.init_asio();
-	print_server.listen(9000);
+	print_server.listen(9010);
 	print_server.start_accept();
 
 	print_server.run();
